@@ -1,0 +1,315 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Imoveis no Rio de Janeiro — Darla Imoveis</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400;1,600&family=Outfit:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=AW-18172401708"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'AW-18172401708');
+  </script>
+  <style>
+    :root {
+      --ink:   #0d1a1f;
+      --deep:  #122530;
+      --ocean: #1b4f63;
+      --sky:   #3a8fa8;
+      --gold:  #c8893a;
+      --warm:  #e8d5b7;
+      --sand:  #f5ede0;
+      --white: #ffffff;
+      --muted: #5a6a72;
+    }
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body { font-family: 'Outfit', sans-serif; background: var(--white); color: var(--ink); overflow-x: hidden; }
+
+    /* NAV */
+    nav {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+      padding: 1.2rem 6vw;
+      display: flex; justify-content: space-between; align-items: center;
+      background: rgba(13,26,31,0.88); backdrop-filter: blur(10px);
+    }
+    .nav-brand { font-family: 'Cormorant Garamond', serif; font-size: 1.4rem; font-weight: 600; letter-spacing: 0.06em; color: var(--white); text-decoration: none; }
+    .nav-brand em { font-style: italic; color: var(--gold); }
+    .nav-links { display: flex; gap: 2rem; align-items: center; }
+    .nav-links a { font-size: 0.72rem; font-weight: 500; letter-spacing: 0.14em; text-transform: uppercase; color: rgba(255,255,255,0.55); text-decoration: none; transition: color 0.2s; }
+    .nav-links a:hover, .nav-links a.active { color: var(--gold); }
+    .nav-cta { background: var(--gold) !important; color: var(--white) !important; padding: 0.5rem 1.3rem; }
+    @media(max-width:600px){ .nav-links a:not(.nav-cta){ display:none; } }
+
+    /* HERO */
+    .hero { position: relative; height: 100vh; min-height: 620px; display: flex; align-items: flex-end; overflow: hidden; }
+    .hero-bg { position: absolute; inset: 0; background: url('../Skyline.png') center 40% / cover no-repeat; }
+    .hero-bg::after {
+      content: ''; position: absolute; inset: 0;
+      background: linear-gradient(to bottom, rgba(13,26,31,0.2) 0%, rgba(13,26,31,0.25) 40%, rgba(13,26,31,0.85) 100%);
+    }
+    .hero-content { position: relative; z-index: 2; padding: 0 6vw 7vh; max-width: 820px; }
+    .hero-tag { display: inline-block; font-size: 0.65rem; font-weight: 600; letter-spacing: 0.28em; text-transform: uppercase; color: var(--gold); border: 1px solid rgba(200,137,58,0.45); padding: 0.3rem 1rem; margin-bottom: 1.6rem; opacity: 0; animation: fadeUp 0.7s 0.3s forwards; }
+    .hero h1 { font-family: 'Cormorant Garamond', serif; font-size: clamp(3rem, 7vw, 6.2rem); font-weight: 300; line-height: 1.05; color: var(--white); margin-bottom: 1.2rem; opacity: 0; animation: fadeUp 0.8s 0.5s forwards; }
+    .hero h1 em { font-style: italic; color: var(--warm); }
+    .hero-sub { font-size: clamp(0.9rem, 1.4vw, 1.05rem); font-weight: 300; color: rgba(255,255,255,0.78); line-height: 1.8; max-width: 520px; margin-bottom: 2.8rem; opacity: 0; animation: fadeUp 0.8s 0.7s forwards; }
+    .hero-btns { display: flex; flex-wrap: wrap; gap: 1rem; opacity: 0; animation: fadeUp 0.8s 0.9s forwards; }
+    .btn-primary { display: inline-block; background: var(--gold); color: var(--white); font-family: 'Outfit', sans-serif; font-size: 0.78rem; font-weight: 600; letter-spacing: 0.16em; text-transform: uppercase; text-decoration: none; padding: 1rem 2.4rem; transition: background 0.2s, transform 0.2s; }
+    .btn-primary:hover { background: #b37730; transform: translateY(-2px); }
+    .btn-ghost { display: inline-block; background: transparent; border: 1px solid rgba(255,255,255,0.4); color: rgba(255,255,255,0.85); font-family: 'Outfit', sans-serif; font-size: 0.78rem; font-weight: 400; letter-spacing: 0.14em; text-transform: uppercase; text-decoration: none; padding: 1rem 2.4rem; transition: all 0.2s; }
+    .btn-ghost:hover { background: rgba(255,255,255,0.08); transform: translateY(-2px); }
+
+    /* STATS */
+    .stats-bar { background: var(--deep); display: grid; grid-template-columns: repeat(4, 1fr); }
+    @media(max-width:700px){ .stats-bar { grid-template-columns: repeat(2,1fr); } }
+    .stat { padding: 2rem 1.5rem; text-align: center; border-right: 1px solid rgba(255,255,255,0.08); }
+    .stat:last-child { border-right: none; }
+    .stat-num { font-family: 'Cormorant Garamond', serif; font-size: 2.4rem; font-weight: 600; color: var(--gold); line-height: 1; }
+    .stat-label { margin-top: 0.4rem; font-size: 0.62rem; font-weight: 500; letter-spacing: 0.12em; text-transform: uppercase; color: rgba(255,255,255,0.45); line-height: 1.4; }
+
+    /* SHARED */
+    .section-wrap { padding: 6rem 6vw; }
+    .section-label { font-size: 0.62rem; font-weight: 600; letter-spacing: 0.28em; text-transform: uppercase; color: var(--gold); margin-bottom: 0.8rem; }
+    .section-title { font-family: 'Cormorant Garamond', serif; font-size: clamp(2rem, 3.5vw, 3.2rem); font-weight: 300; line-height: 1.15; margin-bottom: 3rem; }
+    .section-title em { font-style: italic; color: var(--sky); }
+
+    /* BEACH PHOTO SECTION */
+    .beach-section { position: relative; height: 480px; overflow: hidden; }
+    @media(max-width:600px){ .beach-section { height: 300px; } }
+    .beach-section img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: center 30%; }
+    .beach-section::after { content: ''; position: absolute; inset: 0; background: linear-gradient(to bottom, transparent 40%, rgba(13,26,31,0.7) 100%); }
+    .beach-caption { position: absolute; bottom: 2.5rem; left: 6vw; z-index: 2; }
+    .beach-caption h3 { font-family: 'Cormorant Garamond', serif; font-size: clamp(1.8rem, 3.5vw, 3rem); font-weight: 300; color: var(--white); line-height: 1.1; }
+    .beach-caption h3 em { font-style: italic; color: var(--warm); }
+
+    /* SELLING POINTS */
+    .points-bg { background: var(--sand); }
+    .points-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 1.5rem; }
+    .point-card { background: var(--white); padding: 2rem 1.8rem; border-top: 3px solid var(--gold); transition: transform 0.2s, box-shadow 0.2s; }
+    .point-card:hover { transform: translateY(-5px); box-shadow: 0 12px 30px rgba(0,0,0,0.09); }
+    .point-icon { font-size: 1.6rem; margin-bottom: 1rem; }
+    .point-card h3 { font-family: 'Cormorant Garamond', serif; font-size: 1.2rem; font-weight: 600; margin-bottom: 0.6rem; }
+    .point-card p { font-size: 0.85rem; font-weight: 300; line-height: 1.75; color: var(--muted); }
+
+    /* POOL PHOTO */
+    .pool-section { position: relative; }
+    .pool-section img { width: 100%; height: 420px; object-fit: cover; object-position: center; display: block; }
+    @media(max-width:600px){ .pool-section img { height: 260px; } }
+
+    /* CULTURAL BAND */
+    .cultural-band { background: var(--ink); padding: 5rem 6vw; }
+    .cultural-inner { max-width: 760px; margin: 0 auto; text-align: center; }
+    .cultural-band blockquote {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(1.3rem, 2.5vw, 2rem); font-weight: 300; font-style: italic;
+      color: rgba(255,255,255,0.75); line-height: 1.65;
+      border-left: 3px solid var(--gold); padding-left: 2rem; text-align: left;
+      margin-bottom: 1.5rem;
+    }
+    .cultural-attribution { font-size: 0.7rem; font-weight: 500; letter-spacing: 0.16em; text-transform: uppercase; color: var(--gold); }
+
+    /* FORM */
+    .form-section { background: var(--ocean); }
+    .form-inner { max-width: 640px; margin: 0 auto; }
+    .form-section .section-label { color: rgba(255,255,255,0.45); }
+    .form-section .section-title { color: var(--white); margin-bottom: 0.8rem; }
+    .form-intro { font-size: 0.9rem; font-weight: 300; color: rgba(255,255,255,0.55); line-height: 1.8; margin-bottom: 2.5rem; font-style: italic; }
+    .form-grid { display: flex; flex-direction: column; gap: 1rem; }
+    .field-row { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
+    @media(max-width:560px){ .field-row { grid-template-columns: 1fr; } }
+    .field { display: flex; flex-direction: column; }
+    .field label { font-size: 0.62rem; font-weight: 600; letter-spacing: 0.16em; text-transform: uppercase; color: rgba(255,255,255,0.4); margin-bottom: 0.5rem; }
+    .field label .req { color: var(--gold); }
+    .field label .opt { color: rgba(255,255,255,0.25); font-size: 0.58rem; font-weight: 400; letter-spacing: 0; text-transform: none; margin-left: 4px; }
+    .field input, .field select { padding: 0.85rem 1rem; background: rgba(255,255,255,0.08); border: 1px solid rgba(255,255,255,0.18); color: var(--white); font-family: 'Outfit', sans-serif; font-size: 0.9rem; font-weight: 300; outline: none; transition: border-color 0.2s; -webkit-appearance: none; appearance: none; }
+    .field input::placeholder { color: rgba(255,255,255,0.28); }
+    .field input:focus, .field select:focus { border-color: var(--gold); }
+    .field select option { background: var(--ocean); color: var(--white); }
+    .submit-btn { margin-top: 0.4rem; padding: 1.1rem 3rem; background: var(--gold); color: var(--white); border: none; font-family: 'Outfit', sans-serif; font-size: 0.78rem; font-weight: 600; letter-spacing: 0.16em; text-transform: uppercase; cursor: pointer; align-self: flex-start; transition: background 0.2s, transform 0.2s; }
+    .submit-btn:hover { background: #b37730; transform: translateY(-2px); }
+    .form-note { margin-top: 1rem; font-size: 0.7rem; font-weight: 300; color: rgba(255,255,255,0.3); line-height: 1.6; }
+    .cta-center { text-align: center; margin-top: 3.5rem; }
+
+    /* FOOTER */
+    footer { background: var(--deep); padding: 2.5rem 6vw; display: flex; flex-wrap: wrap; justify-content: space-between; align-items: center; gap: 1rem; }
+    .footer-brand { font-family: 'Cormorant Garamond', serif; font-size: 1.2rem; font-weight: 600; color: var(--white); }
+    .footer-brand em { font-style: italic; color: var(--gold); }
+    .footer-insta { display: flex; align-items: center; gap: 0.5rem; color: rgba(255,255,255,0.4); text-decoration: none; font-size: 0.72rem; font-weight: 500; transition: color 0.2s; }
+    .footer-insta:hover { color: var(--gold); }
+    .footer-copy { font-size: 0.68rem; font-weight: 300; color: rgba(255,255,255,0.25); width: 100%; margin-top: 0.5rem; }
+
+    /* ANIMATIONS */
+    @keyframes fadeUp { from { opacity:0; transform:translateY(18px); } to { opacity:1; transform:translateY(0); } }
+    .reveal { opacity:0; transform:translateY(22px); transition: opacity 0.65s ease, transform 0.65s ease; }
+    .reveal.visible { opacity:1; transform:translateY(0); }
+  </style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <a href="/" class="nav-brand">Darla <em>Imoveis</em></a>
+  <div class="nav-links">
+    <a href="/rio/" class="active">Rio de Janeiro</a>
+    <a href="https://jazzdinosaur.github.io/niteroi-imoveis/">Niteroi</a>
+    <a href="#cadastro" class="nav-cta">Contato</a>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-bg"></div>
+  <div class="hero-content">
+    <span class="hero-tag">Rio de Janeiro · Brasil</span>
+    <h1>Viva no Rio.<br><em>A cidade mais<br>famosa do mundo.</em></h1>
+    <p class="hero-sub">Apartamentos modernos em regioes em plena valorizacao — do Porto Maravilha ao Maracana. Lazer completo, metro na porta, Rio a seus pes.</p>
+    <div class="hero-btns">
+      <a href="#cadastro" class="btn-primary">Quero saber mais</a>
+      <a href="#pontos" class="btn-ghost">Por que o Rio</a>
+    </div>
+  </div>
+</section>
+
+<!-- STATS -->
+<div class="stats-bar">
+  <div class="stat reveal"><div class="stat-num">2x</div><div class="stat-label">Crescimento de<br>lancamentos no Rio</div></div>
+  <div class="stat reveal"><div class="stat-num">Metro</div><div class="stat-label">Acesso direto ao<br>transporte publico</div></div>
+  <div class="stat reveal"><div class="stat-num">100%</div><div class="stat-label">Apartamentos<br>novos e modernos</div></div>
+  <div class="stat reveal"><div class="stat-num">+56%</div><div class="stat-label">Alta no valor<br>do aluguel em 4 anos</div></div>
+</div>
+
+<!-- SELLING POINTS -->
+<section class="points-bg" id="pontos">
+  <div class="section-wrap">
+    <p class="section-label reveal">Por que o Rio</p>
+    <h2 class="section-title reveal">Uma cidade unica —<br><em>historia, cultura e futuro.</em></h2>
+    <div class="points-grid">
+      <div class="point-card reveal">
+        <div class="point-icon">&#127963;</div>
+        <h3>Porto Maravilha</h3>
+        <p>A regiao portuaria revitalizada e o novo centro cultural do Rio — com museus, galerias, restaurantes e a historia do choro e do samba nascendo nas suas ruas.</p>
+      </div>
+      <div class="point-card reveal">
+        <div class="point-icon">&#127944;</div>
+        <h3>Lazer ao redor</h3>
+        <p>A poucos minutos do Maracana, BioParque, Quinta da Boa Vista e Shopping Tijuca. Uma boa opcao para cada dia — do passeio em familia as compras de fim de tarde.</p>
+      </div>
+      <div class="point-card reveal">
+        <div class="point-icon">&#128645;</div>
+        <h3>Mobilidade total</h3>
+        <p>Metro, Terminal Intermodal Gentileza e Rodoviaria Novo Rio a poucos metros. Acesso rapido as principais vias da cidade — mais tempo para voce, menos tempo no transito.</p>
+      </div>
+      <div class="point-card reveal">
+        <div class="point-icon">&#127958;</div>
+        <h3>Praias e natureza</h3>
+        <p>Ipanema, Copacabana, Leblon — as praias mais famosas do mundo a menos de meia hora. A natureza do Rio e parte do seu cotidiano.</p>
+      </div>
+      <div class="point-card reveal">
+        <div class="point-icon">&#128200;</div>
+        <h3>Valorizacao consistente</h3>
+        <p>Regioes em plena expansao com forte crescimento de lancamentos e alugueis. Investimento com solido potencial de retorno.</p>
+      </div>
+      <div class="point-card reveal">
+        <div class="point-icon">&#127925;</div>
+        <h3>Capital cultural do Brasil</h3>
+        <p>O choro nasceu aqui. O samba nasceu aqui. A musica, a arte e a cultura brasileira tem o Rio como seu centro — um lugar onde a historia vibra e o futuro se desenha.</p>
+      </div>
+    </div>
+    <div class="cta-center reveal">
+      <a href="#cadastro" class="btn-primary">Quero saber mais</a>
+    </div>
+  </div>
+</section>
+
+<!-- IPANEMA BEACH -->
+<div class="beach-section">
+  <img src="../Ipanema.jpeg" alt="Praia de Ipanema ao entardecer">
+  <div class="beach-caption">
+    <h3>Ipanema ao entardecer —<br><em>o Rio que voce merece.</em></h3>
+  </div>
+</div>
+
+<!-- POOL PHOTO -->
+<div class="pool-section">
+  <img src="../Pool_common_area.png" alt="Area de lazer com piscina">
+</div>
+
+<!-- CULTURAL BAND -->
+<div class="cultural-band">
+  <div class="cultural-inner">
+    <blockquote>
+      "O Porto Maravilha sempre foi palco de encontros improvaveis — de pessoas, de culturas, de sonoridades. Foi ali que nasceu o choro. Um lugar onde as raizes culturais vibram, mas o olhar aponta para frente."
+    </blockquote>
+    <p class="cultural-attribution">Porto Maravilha · Rio de Janeiro</p>
+  </div>
+</div>
+
+<!-- FORM -->
+<section class="form-section" id="cadastro">
+  <div class="section-wrap">
+    <div class="form-inner">
+      <p class="section-label">Cadastre-se</p>
+      <h2 class="section-title">Receba informacoes<br><em>sem compromisso.</em></h2>
+      <p class="form-intro">Deixe seu contato e a Darla entra em contato com as melhores opcoes no Rio de Janeiro.</p>
+      <form class="form-grid" action="https://usebasin.com/f/bfc13a3b62e3" method="POST" enctype="multipart/form-data">
+        <input type="hidden" name="_next" value="https://darlaimoveis.com.br/obrigado.html">
+        <input type="hidden" name="_subject" value="Novo contato Rio - Darla Imoveis">
+        <input type="hidden" name="pagina" value="Rio de Janeiro">
+        <div class="field-row">
+          <div class="field">
+            <label>Nome <span class="req">*</span></label>
+            <input type="text" name="nome" placeholder="Seu nome completo" required>
+          </div>
+          <div class="field">
+            <label>Pais <span class="opt">(opcional)</span></label>
+            <select name="pais">
+              <option value="">Selecione...</option>
+              <option>Brasil</option>
+              <option>Angola</option>
+              <option>Portugal</option>
+              <option>Mocambique</option>
+              <option>Cabo Verde</option>
+              <option>Outro</option>
+            </select>
+          </div>
+        </div>
+        <div class="field">
+          <label>E-mail <span class="opt">(ou WhatsApp abaixo)</span></label>
+          <input type="email" name="email" placeholder="seu@email.com">
+        </div>
+        <div class="field">
+          <label>WhatsApp <span class="opt">(opcional - codigo do pais sem o +)</span></label>
+          <input type="text" name="whatsapp" placeholder="55 21 99999 9999">
+        </div>
+        <div>
+          <button type="submit" class="submit-btn">Enviar cadastro</button>
+        </div>
+        <p class="form-note">Seus dados sao usados apenas para envio de informacoes sobre imoveis no Rio de Janeiro. Voce pode cancelar a qualquer momento.</p>
+      </form>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-brand">Darla <em>Imoveis</em></div>
+  <a href="https://www.instagram.com/darlaimoveis.rj/" target="_blank" rel="noopener" class="footer-insta">
+    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="0.8" fill="currentColor" stroke="none"/></svg>
+    @darlaimoveis.rj
+  </a>
+  <p class="footer-copy">2025 · Darla Imoveis · Rio de Janeiro e Niteroi, RJ, Brasil</p>
+</footer>
+
+<script>
+  const observer = new IntersectionObserver(entries => {
+    entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
+  }, { threshold: 0.1 });
+  document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+</script>
+</body>
+</html>
