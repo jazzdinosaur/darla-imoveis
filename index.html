@@ -3,128 +3,10 @@
 <head>
   <meta charset="UTF-8"/>
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Viva em Niteroi -- Invista em Niteroi</title>
+  <title>Darla Imoveis — Rio de Janeiro, Niteroi e Regiao</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400;1,700&family=Jost:wght@300;400;500;600&display=swap" rel="stylesheet">
-  <style>
-    :root {
-      --ink:   #0e1a20;
-      --ocean: #1b4f63;
-      --sky:   #3a8fa8;
-      --gold:  #c8893a;
-      --sand:  #f5ede0;
-      --white: #ffffff;
-      --muted: #5a6a72;
-    }
-    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-    html { scroll-behavior: smooth; }
-    body { font-family: 'Jost', sans-serif; background: var(--white); color: var(--ink); overflow-x: hidden; }
-
-    /* HERO */
-    .hero { position: relative; height: 100vh; min-height: 600px; display: flex; align-items: flex-end; overflow: hidden; }
-    .hero-img { position: absolute; inset: 0; background: url('Niteroi_Stock.jpg') center center / cover no-repeat; }
-    .hero-img::after { content: ''; position: absolute; inset: 0; background: linear-gradient(to bottom, rgba(14,26,32,0.15) 0%, rgba(14,26,32,0.20) 40%, rgba(14,26,32,0.78) 100%); }
-    .hero-content { position: relative; z-index: 2; padding: 0 8vw 6vh; max-width: 900px; }
-    .hero-eyebrow { display: inline-block; font-size: 0.68rem; font-weight: 600; letter-spacing: 0.25em; text-transform: uppercase; color: var(--gold); border: 1px solid rgba(200,137,58,0.5); padding: 0.3rem 0.9rem; margin-bottom: 1.6rem; opacity: 0; animation: fadeUp 0.7s 0.3s forwards; }
-    .hero h1 { font-family: 'Playfair Display', serif; font-size: clamp(2.8rem, 6.5vw, 5.8rem); font-weight: 700; line-height: 1.07; color: var(--white); margin-bottom: 0.8rem; opacity: 0; animation: fadeUp 0.8s 0.5s forwards; }
-    .hero h1 em { font-style: italic; font-weight: 400; color: #f0d8b8; }
-    .hero-tagline { font-family: 'Playfair Display', serif; font-size: clamp(1rem, 2vw, 1.5rem); font-weight: 400; font-style: italic; color: var(--gold); margin-bottom: 1.4rem; letter-spacing: 0.02em; opacity: 0; animation: fadeUp 0.8s 0.65s forwards; }
-    .hero-sub { font-size: clamp(0.95rem, 1.5vw, 1.1rem); font-weight: 300; color: rgba(255,255,255,0.82); line-height: 1.75; max-width: 560px; margin-bottom: 2.5rem; opacity: 0; animation: fadeUp 0.8s 0.7s forwards; }
-    .hero-btns { display: flex; flex-wrap: wrap; gap: 1rem; opacity: 0; animation: fadeUp 0.8s 0.9s forwards; }
-    .hero-btn { display: inline-block; background: var(--gold); color: var(--white); font-family: 'Jost', sans-serif; font-size: 0.8rem; font-weight: 600; letter-spacing: 0.18em; text-transform: uppercase; text-decoration: none; padding: 1rem 2.5rem; border: none; cursor: pointer; transition: background 0.25s, transform 0.2s; }
-    .hero-btn:hover { background: #b37730; transform: translateY(-3px); }
-    .hero-btn.outline { background: transparent; border: 1px solid rgba(255,255,255,0.5); }
-    .hero-btn.outline:hover { background: rgba(255,255,255,0.1); transform: translateY(-3px); }
-
-    /* STATS */
-    .stats-bar { background: var(--ocean); display: grid; grid-template-columns: repeat(4, 1fr); }
-    @media(max-width:700px){ .stats-bar { grid-template-columns: repeat(2,1fr); } }
-    .stat { padding: 2.2rem 1.5rem; text-align: center; border-right: 1px solid rgba(255,255,255,0.1); }
-    .stat:last-child { border-right: none; }
-    .stat-num { font-family: 'Playfair Display', serif; font-size: 2.4rem; font-weight: 700; color: var(--gold); line-height: 1; }
-    .stat-label { margin-top: 0.45rem; font-size: 0.68rem; font-weight: 500; letter-spacing: 0.12em; text-transform: uppercase; color: rgba(255,255,255,0.55); line-height: 1.4; }
-
-    /* SHARED */
-    .section-wrap { padding: 6rem 8vw; }
-    .section-label { font-size: 0.65rem; font-weight: 600; letter-spacing: 0.25em; text-transform: uppercase; color: var(--gold); margin-bottom: 1rem; }
-    .section-title { font-family: 'Playfair Display', serif; font-size: clamp(1.9rem, 3.5vw, 3rem); font-weight: 700; line-height: 1.18; margin-bottom: 3.5rem; }
-    .section-title em { font-style: italic; color: var(--sky); }
-    .cta-btn { display: inline-block; background: var(--ocean); color: var(--white); font-family: 'Jost', sans-serif; font-size: 0.8rem; font-weight: 600; letter-spacing: 0.18em; text-transform: uppercase; text-decoration: none; padding: 1rem 2.5rem; border: none; cursor: pointer; transition: background 0.2s, transform 0.2s; }
-    .cta-btn:hover { background: var(--sky); transform: translateY(-2px); }
-    .cta-center { text-align: center; margin-top: 3.5rem; }
-
-    /* SELLING POINTS */
-    .points-bg { background: var(--sand); }
-    .points-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 1.5rem; }
-    .point-card { background: var(--white); padding: 2rem 1.8rem; border-top: 3px solid var(--gold); transition: transform 0.2s, box-shadow 0.2s; }
-    .point-card:hover { transform: translateY(-5px); box-shadow: 0 12px 30px rgba(0,0,0,0.10); }
-    .point-icon { font-size: 1.7rem; margin-bottom: 1rem; }
-    .point-card h3 { font-family: 'Playfair Display', serif; font-size: 1.15rem; font-weight: 700; margin-bottom: 0.6rem; }
-    .point-card p { font-size: 0.88rem; font-weight: 300; line-height: 1.75; color: var(--muted); }
-    .point-source { display: block; margin-top: 0.8rem; font-size: 0.68rem; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase; color: var(--sky); opacity: 0.8; }
-
-    /* FINANCING BANNER */
-    .financing-band { background: var(--ocean); padding: 3rem 8vw; }
-    .financing-inner { max-width: 900px; margin: 0 auto; display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 2rem; }
-    .financing-text h3 { font-family: 'Playfair Display', serif; font-size: clamp(1.4rem, 2.5vw, 2rem); font-weight: 700; color: var(--white); margin-bottom: 0.5rem; }
-    .financing-text h3 em { font-style: italic; font-weight: 400; color: #f0d8b8; }
-    .financing-text p { font-size: 0.9rem; font-weight: 300; color: rgba(255,255,255,0.7); line-height: 1.7; max-width: 520px; }
-    .financing-tags { display: flex; flex-wrap: wrap; gap: 0.6rem; margin-top: 1.2rem; }
-    .ftag { background: rgba(255,255,255,0.1); border: 1px solid rgba(255,255,255,0.2); color: rgba(255,255,255,0.8); font-size: 0.72rem; font-weight: 500; letter-spacing: 0.08em; padding: 0.35rem 0.8rem; }
-
-    /* PRICES */
-    .price-section { background: var(--ink); }
-    .price-section .section-label { color: rgba(255,255,255,0.4); }
-    .price-section .section-title { color: var(--white); }
-    .price-note { font-size: 0.8rem; font-weight: 300; color: rgba(255,255,255,0.4); margin-top: -2.5rem; margin-bottom: 3rem; font-style: italic; }
-    .price-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(210px, 1fr)); gap: 1.2rem; }
-    .price-card { border: 1px solid rgba(255,255,255,0.1); padding: 2.2rem 1.8rem; background: rgba(255,255,255,0.03); position: relative; transition: border-color 0.2s, transform 0.2s; }
-    .price-card:hover { border-color: rgba(200,137,58,0.5); transform: translateY(-4px); }
-    .price-card.featured { border-color: var(--gold); background: rgba(200,137,58,0.07); }
-    .price-card.featured::before { content: 'Mais procurado'; position: absolute; top: -1px; left: 50%; transform: translateX(-50%); background: var(--gold); color: var(--white); font-size: 0.6rem; font-weight: 600; letter-spacing: 0.15em; text-transform: uppercase; padding: 0.25rem 0.9rem; white-space: nowrap; }
-    .price-type { font-size: 0.68rem; font-weight: 600; letter-spacing: 0.18em; text-transform: uppercase; color: var(--gold); margin-bottom: 1rem; }
-    .price-amount { font-family: 'Playfair Display', serif; font-size: clamp(1.5rem, 2.2vw, 2rem); font-weight: 700; color: var(--white); line-height: 1.1; margin-bottom: 0.35rem; }
-    .price-from { font-size: 0.65rem; font-weight: 400; color: rgba(255,255,255,0.35); text-transform: uppercase; letter-spacing: 0.1em; display: block; margin-bottom: 1.2rem; }
-    .price-desc { font-size: 0.82rem; font-weight: 300; color: rgba(255,255,255,0.5); line-height: 1.65; }
-    .price-cta { display: block; margin-top: 1.8rem; text-align: center; padding: 0.75rem 1rem; background: transparent; border: 1px solid rgba(255,255,255,0.18); color: rgba(255,255,255,0.6); font-family: 'Jost', sans-serif; font-size: 0.7rem; font-weight: 600; letter-spacing: 0.15em; text-transform: uppercase; text-decoration: none; cursor: pointer; transition: all 0.2s; }
-    .price-cta:hover, .price-card.featured .price-cta { background: var(--gold); border-color: var(--gold); color: var(--white); }
-    .price-disclaimer { margin-top: 2.5rem; font-size: 0.72rem; font-weight: 300; color: rgba(255,255,255,0.28); font-style: italic; text-align: center; }
-
-    /* FORM */
-    .form-section { background: var(--ocean); }
-    .form-inner { max-width: 680px; margin: 0 auto; }
-    .form-section .section-label { color: rgba(255,255,255,0.5); }
-    .form-section .section-title { color: var(--white); margin-bottom: 0.8rem; }
-    .form-intro { font-size: 0.95rem; font-weight: 300; color: rgba(255,255,255,0.65); line-height: 1.75; margin-bottom: 2.5rem; }
-    .form-grid { display: flex; flex-direction: column; gap: 1.1rem; }
-    .field-row { display: grid; grid-template-columns: 1fr 1fr; gap: 1.1rem; }
-    @media(max-width:560px){ .field-row { grid-template-columns: 1fr; } }
-    .field { display: flex; flex-direction: column; }
-    .field label { font-size: 0.65rem; font-weight: 600; letter-spacing: 0.18em; text-transform: uppercase; color: rgba(255,255,255,0.5); margin-bottom: 0.5rem; }
-    .field label .req { color: var(--gold); margin-left: 2px; }
-    .field label .opt { color: rgba(255,255,255,0.3); font-size:0.6rem; font-weight:400; letter-spacing:0; text-transform:none; margin-left:4px; }
-    .field input, .field select { padding: 0.85rem 1rem; background: rgba(255,255,255,0.08); border: 1px solid rgba(255,255,255,0.18); color: var(--white); font-family: 'Jost', sans-serif; font-size: 0.95rem; font-weight: 300; outline: none; transition: border-color 0.2s, background 0.2s; -webkit-appearance: none; appearance: none; }
-    .field input::placeholder { color: rgba(255,255,255,0.3); }
-    .field input:focus, .field select:focus { border-color: var(--gold); background: rgba(255,255,255,0.12); }
-    .field select option { background: var(--ocean); color: var(--white); }
-    .submit-btn { margin-top: 0.6rem; padding: 1.1rem 3rem; background: var(--gold); color: var(--white); border: none; font-family: 'Jost', sans-serif; font-size: 0.8rem; font-weight: 600; letter-spacing: 0.18em; text-transform: uppercase; cursor: pointer; align-self: flex-start; transition: background 0.2s, transform 0.2s; }
-    .submit-btn:hover { background: #b37730; transform: translateY(-2px); }
-    .form-note { margin-top: 1.2rem; font-size: 0.72rem; font-weight: 300; color: rgba(255,255,255,0.35); line-height: 1.6; }
-
-    /* FOOTER */
-    footer { background: var(--ink); padding: 2.5rem 8vw; display: flex; flex-wrap: wrap; justify-content: space-between; align-items: center; gap: 1rem; }
-    .footer-brand { font-family: 'Playfair Display', serif; font-size: 1.2rem; font-weight: 700; color: var(--white); }
-    .footer-brand span { color: var(--gold); }
-    .footer-copy { font-size: 0.72rem; font-weight: 300; color: rgba(255,255,255,0.3); }
-    .footer-insta { display: flex; align-items: center; gap: 0.5rem; color: rgba(255,255,255,0.5); text-decoration: none; font-size: 0.75rem; font-weight: 500; letter-spacing: 0.05em; transition: color 0.2s; }
-    .footer-insta:hover { color: var(--gold); }
-
-    /* ANIMATIONS */
-    @keyframes fadeUp { from { opacity:0; transform:translateY(20px); } to { opacity:1; transform:translateY(0); } }
-    .reveal { opacity:0; transform:translateY(24px); transition: opacity 0.65s ease, transform 0.65s ease; }
-    .reveal.visible { opacity:1; transform:translateY(0); }
-  </style>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400;1,600&family=Outfit:wght@300;400;500;600&display=swap" rel="stylesheet">
   <!-- Google tag (gtag.js) -->
   <script async src="https://www.googletagmanager.com/gtag/js?id=AW-18172401708"></script>
   <script>
@@ -133,140 +15,371 @@
     gtag('js', new Date());
     gtag('config', 'AW-18172401708');
   </script>
+  <style>
+    :root {
+      --ink:    #0d1a1f;
+      --deep:   #122530;
+      --ocean:  #1b4f63;
+      --sky:    #3a8fa8;
+      --gold:   #c8893a;
+      --warm:   #e8d5b7;
+      --sand:   #f5ede0;
+      --white:  #ffffff;
+      --muted:  #5a6a72;
+    }
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body { font-family: 'Outfit', sans-serif; background: var(--white); color: var(--ink); overflow-x: hidden; }
+
+    /* NAV */
+    nav {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+      padding: 1.2rem 6vw;
+      display: flex; justify-content: space-between; align-items: center;
+      background: rgba(13,26,31,0.88); backdrop-filter: blur(10px);
+    }
+    .nav-brand {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.4rem; font-weight: 600; letter-spacing: 0.06em;
+      color: var(--white); text-decoration: none;
+    }
+    .nav-brand em { font-style: italic; color: var(--gold); }
+    .nav-links { display: flex; gap: 2rem; align-items: center; }
+    .nav-links a {
+      font-size: 0.72rem; font-weight: 500; letter-spacing: 0.14em;
+      text-transform: uppercase; color: rgba(255,255,255,0.55);
+      text-decoration: none; transition: color 0.2s;
+    }
+    .nav-links a:hover { color: var(--gold); }
+    .nav-cta {
+      background: var(--gold) !important; color: var(--white) !important;
+      padding: 0.5rem 1.3rem; letter-spacing: 0.12em !important;
+    }
+    @media(max-width:600px){ .nav-links a:not(.nav-cta){ display:none; } }
+
+    /* HERO */
+    .hero {
+      position: relative; height: 100vh; min-height: 620px;
+      display: flex; align-items: flex-end; overflow: hidden;
+    }
+    .hero-bg {
+      position: absolute; inset: 0;
+      background: url('BeutifulBlg.jpeg') center 30% / cover no-repeat;
+    }
+    .hero-bg::after {
+      content: ''; position: absolute; inset: 0;
+      background: linear-gradient(
+        160deg,
+        rgba(13,26,31,0.55) 0%,
+        rgba(13,26,31,0.25) 40%,
+        rgba(13,26,31,0.82) 100%
+      );
+    }
+    .hero-content {
+      position: relative; z-index: 2;
+      padding: 0 6vw 7vh; max-width: 820px;
+    }
+    .hero-tag {
+      display: inline-block; font-size: 0.65rem; font-weight: 600;
+      letter-spacing: 0.28em; text-transform: uppercase; color: var(--gold);
+      border: 1px solid rgba(200,137,58,0.45); padding: 0.3rem 1rem;
+      margin-bottom: 1.6rem; opacity: 0; animation: fadeUp 0.7s 0.3s forwards;
+    }
+    .hero h1 {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(3rem, 7vw, 6.2rem); font-weight: 300;
+      line-height: 1.05; color: var(--white); margin-bottom: 1.2rem;
+      opacity: 0; animation: fadeUp 0.8s 0.5s forwards;
+    }
+    .hero h1 em { font-style: italic; color: var(--warm); }
+    .hero h1 strong { font-weight: 600; }
+    .hero-sub {
+      font-size: clamp(0.9rem, 1.4vw, 1.05rem); font-weight: 300;
+      color: rgba(255,255,255,0.78); line-height: 1.8; max-width: 500px;
+      margin-bottom: 2.8rem; opacity: 0; animation: fadeUp 0.8s 0.7s forwards;
+    }
+    .hero-btns { display: flex; flex-wrap: wrap; gap: 1rem; opacity: 0; animation: fadeUp 0.8s 0.9s forwards; }
+    .btn-primary {
+      display: inline-block; background: var(--gold); color: var(--white);
+      font-family: 'Outfit', sans-serif; font-size: 0.78rem; font-weight: 600;
+      letter-spacing: 0.16em; text-transform: uppercase; text-decoration: none;
+      padding: 1rem 2.4rem; transition: background 0.2s, transform 0.2s;
+    }
+    .btn-primary:hover { background: #b37730; transform: translateY(-2px); }
+    .btn-ghost {
+      display: inline-block; background: transparent;
+      border: 1px solid rgba(255,255,255,0.4); color: rgba(255,255,255,0.85);
+      font-family: 'Outfit', sans-serif; font-size: 0.78rem; font-weight: 400;
+      letter-spacing: 0.14em; text-transform: uppercase; text-decoration: none;
+      padding: 1rem 2.4rem; transition: all 0.2s;
+    }
+    .btn-ghost:hover { background: rgba(255,255,255,0.08); transform: translateY(-2px); }
+
+    /* AGENT STRIP */
+    .agent-strip {
+      background: var(--deep);
+      padding: 2.5rem 6vw;
+      display: flex; flex-wrap: wrap; align-items: center;
+      gap: 2rem; justify-content: space-between;
+    }
+    .agent-left { display: flex; align-items: center; gap: 1.4rem; }
+    .agent-avatar {
+      width: 130px; height: 130px; border-radius: 50%;
+      object-fit: cover; object-position: center top;
+      border: 2px solid var(--gold); flex-shrink: 0;
+    }
+    .agent-name {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.3rem; font-weight: 600; color: var(--white); line-height: 1.2;
+    }
+    .agent-title {
+      font-size: 0.68rem; font-weight: 400; letter-spacing: 0.12em;
+      text-transform: uppercase; color: var(--gold); margin-top: 0.2rem;
+    }
+    .agent-statement {
+      font-size: 0.9rem; font-weight: 300; font-style: italic;
+      color: rgba(255,255,255,0.65); line-height: 1.75;
+      max-width: 480px; flex: 1;
+    }
+    .agent-contacts { display: flex; flex-wrap: wrap; gap: 1rem; align-items: center; }
+    .contact-btn {
+      display: inline-flex; align-items: center; gap: 0.5rem;
+      font-size: 0.72rem; font-weight: 500; letter-spacing: 0.1em;
+      text-transform: uppercase; text-decoration: none; padding: 0.6rem 1.2rem;
+      transition: all 0.2s;
+    }
+    .contact-btn.whatsapp { background: #25d366; color: var(--white); }
+    .contact-btn.whatsapp:hover { background: #1db954; }
+    .contact-btn.instagram { background: rgba(255,255,255,0.08); color: rgba(255,255,255,0.7); border: 1px solid rgba(255,255,255,0.2); }
+    .contact-btn.instagram:hover { background: rgba(255,255,255,0.15); color: var(--white); }
+
+    /* PROPERTIES SECTION */
+    .properties { background: var(--sand); }
+    .section-wrap { padding: 6rem 6vw; }
+    .section-label {
+      font-size: 0.62rem; font-weight: 600; letter-spacing: 0.28em;
+      text-transform: uppercase; color: var(--gold); margin-bottom: 0.8rem;
+    }
+    .section-title {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(2rem, 3.5vw, 3.2rem); font-weight: 300;
+      line-height: 1.15; margin-bottom: 3.5rem;
+    }
+    .section-title em { font-style: italic; color: var(--ocean); }
+    .prop-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1.5rem; }
+    .prop-card {
+      background: var(--white); overflow: hidden;
+      transition: transform 0.25s, box-shadow 0.25s;
+      text-decoration: none; color: inherit; display: block;
+    }
+    .prop-card:hover { transform: translateY(-6px); box-shadow: 0 16px 40px rgba(0,0,0,0.12); }
+    .prop-card-img {
+      width: 100%; height: 220px;
+      object-fit: cover; object-position: center;
+      display: block;
+    }
+    .prop-card-body { padding: 1.6rem; border-top: 3px solid var(--gold); }
+    .prop-location {
+      font-size: 0.62rem; font-weight: 600; letter-spacing: 0.18em;
+      text-transform: uppercase; color: var(--gold); margin-bottom: 0.5rem;
+    }
+    .prop-title {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.4rem; font-weight: 600; margin-bottom: 0.6rem; line-height: 1.2;
+    }
+    .prop-desc { font-size: 0.85rem; font-weight: 300; color: var(--muted); line-height: 1.7; margin-bottom: 1.2rem; }
+    .prop-link {
+      font-size: 0.7rem; font-weight: 600; letter-spacing: 0.14em;
+      text-transform: uppercase; color: var(--ocean);
+      text-decoration: none; border-bottom: 1px solid var(--ocean);
+      padding-bottom: 1px; transition: color 0.2s, border-color 0.2s;
+    }
+    .prop-link:hover { color: var(--gold); border-color: var(--gold); }
+
+    /* FEATURES */
+    .features-section { background: var(--ocean); }
+    .features-section .section-title { color: var(--white); }
+    .features-section .section-label { color: rgba(255,255,255,0.45); }
+    .features-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 1px; background: rgba(255,255,255,0.08); }
+    .feature {
+      background: transparent; padding: 2.2rem 1.8rem;
+      transition: background 0.2s;
+    }
+    .feature:hover { background: rgba(255,255,255,0.05); }
+    .feature-icon { font-size: 1.6rem; margin-bottom: 1rem; }
+    .feature h3 {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.1rem; font-weight: 600; color: var(--white); margin-bottom: 0.5rem;
+    }
+    .feature p { font-size: 0.82rem; font-weight: 300; color: rgba(255,255,255,0.55); line-height: 1.7; }
+
+    /* FORM */
+    .form-section { background: var(--ink); }
+    .form-inner { max-width: 640px; margin: 0 auto; }
+    .form-section .section-label { color: rgba(255,255,255,0.4); }
+    .form-section .section-title { color: var(--white); margin-bottom: 0.8rem; }
+    .form-intro { font-size: 0.9rem; font-weight: 300; color: rgba(255,255,255,0.55); line-height: 1.8; margin-bottom: 2.5rem; font-style: italic; }
+    .form-grid { display: flex; flex-direction: column; gap: 1rem; }
+    .field-row { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
+    @media(max-width:560px){ .field-row { grid-template-columns: 1fr; } }
+    .field { display: flex; flex-direction: column; }
+    .field label { font-size: 0.62rem; font-weight: 600; letter-spacing: 0.16em; text-transform: uppercase; color: rgba(255,255,255,0.4); margin-bottom: 0.5rem; }
+    .field label .req { color: var(--gold); }
+    .field label .opt { color: rgba(255,255,255,0.25); font-size: 0.58rem; font-weight: 400; letter-spacing: 0; text-transform: none; margin-left: 4px; }
+    .field input, .field select, .field textarea {
+      padding: 0.85rem 1rem; background: rgba(255,255,255,0.06);
+      border: 1px solid rgba(255,255,255,0.14); color: var(--white);
+      font-family: 'Outfit', sans-serif; font-size: 0.9rem; font-weight: 300;
+      outline: none; transition: border-color 0.2s, background 0.2s;
+      -webkit-appearance: none; appearance: none; resize: none;
+    }
+    .field input::placeholder, .field textarea::placeholder { color: rgba(255,255,255,0.25); }
+    .field input:focus, .field select:focus, .field textarea:focus { border-color: var(--gold); background: rgba(255,255,255,0.09); }
+    .field select option { background: var(--ink); color: var(--white); }
+    .submit-btn {
+      margin-top: 0.4rem; padding: 1.1rem 3rem; background: var(--gold);
+      color: var(--white); border: none; font-family: 'Outfit', sans-serif;
+      font-size: 0.78rem; font-weight: 600; letter-spacing: 0.16em;
+      text-transform: uppercase; cursor: pointer; align-self: flex-start;
+      transition: background 0.2s, transform 0.2s;
+    }
+    .submit-btn:hover { background: #b37730; transform: translateY(-2px); }
+    .form-note { margin-top: 1rem; font-size: 0.7rem; font-weight: 300; color: rgba(255,255,255,0.3); line-height: 1.6; }
+
+    /* FOOTER */
+    footer {
+      background: var(--deep); padding: 2.5rem 6vw;
+      display: flex; flex-wrap: wrap; justify-content: space-between;
+      align-items: center; gap: 1rem;
+    }
+    .footer-brand { font-family: 'Cormorant Garamond', serif; font-size: 1.2rem; font-weight: 600; color: var(--white); }
+    .footer-brand em { font-style: italic; color: var(--gold); }
+    .footer-links { display: flex; gap: 2rem; }
+    .footer-links a { font-size: 0.7rem; font-weight: 400; letter-spacing: 0.1em; text-transform: uppercase; color: rgba(255,255,255,0.35); text-decoration: none; transition: color 0.2s; }
+    .footer-links a:hover { color: var(--gold); }
+    .footer-insta { display: flex; align-items: center; gap: 0.5rem; color: rgba(255,255,255,0.4); text-decoration: none; font-size: 0.72rem; font-weight: 500; transition: color 0.2s; }
+    .footer-insta:hover { color: var(--gold); }
+    .footer-copy { font-size: 0.68rem; font-weight: 300; color: rgba(255,255,255,0.25); width: 100%; margin-top: 0.5rem; }
+
+    /* ANIMATIONS */
+    @keyframes fadeUp { from { opacity:0; transform:translateY(18px); } to { opacity:1; transform:translateY(0); } }
+    .reveal { opacity:0; transform:translateY(22px); transition: opacity 0.65s ease, transform 0.65s ease; }
+    .reveal.visible { opacity:1; transform:translateY(0); }
+  </style>
 </head>
 <body>
 
+<!-- NAV -->
+<nav>
+  <a href="/" class="nav-brand">Darla <em>Imoveis</em></a>
+  <div class="nav-links">
+    <a href="rio/">Rio de Janeiro</a>
+    <a href="https://jazzdinosaur.github.io/niteroi-imoveis/">Niteroi</a>
+    <a href="#cadastro" class="nav-cta">Contato</a>
+  </div>
+</nav>
+
 <!-- HERO -->
 <section class="hero">
-  <div class="hero-img"></div>
+  <div class="hero-bg"></div>
   <div class="hero-content">
-    <span class="hero-eyebrow">Niteroi - Rio de Janeiro - Brasil</span>
-    <h1>Viva em Niteroi.<br><em>Invista em Niteroi.</em></h1>
-    <p class="hero-tagline">Apartamentos modernos, localizacao privilegiada, suporte completo.</p>
-    <p class="hero-sub">Para quem quer morar com qualidade de vida incomparavel ou investir num mercado em plena expansao: Niteroi oferece o melhor dos dois mundos.</p>
+    <span class="hero-tag">Rio de Janeiro · Niteroi · Brasil</span>
+    <h1><strong>O imovel certo.</strong><br><em>A cidade certa.</em><br>A escolha sua.</h1>
+    <p class="hero-sub">Apartamentos modernos no Rio de Janeiro e em Niteroi — para quem quer viver bem, investir com seguranca ou encontrar o lar dos seus sonhos.</p>
     <div class="hero-btns">
-      <a href="#cadastro" class="hero-btn">Quero saber mais</a>
-      <a href="#precos" class="hero-btn outline">Ver precos</a>
+      <a href="#cadastro" class="btn-primary">Fale comigo</a>
+      <a href="#imoveis" class="btn-ghost">Ver imoveis</a>
     </div>
   </div>
 </section>
 
-<!-- STATS -->
-<div class="stats-bar">
-  <div class="stat reveal"><div class="stat-num">20min</div><div class="stat-label">De ferry para o<br>centro do Rio</div></div>
-  <div class="stat reveal"><div class="stat-num">+73%</div><div class="stat-label">Crescimento em<br>lancamentos 2025</div></div>
-  <div class="stat reveal"><div class="stat-num">#1</div><div class="stat-label">IDH mais alto<br>do estado do RJ</div></div>
-  <div class="stat reveal"><div class="stat-num">+56%</div><div class="stat-label">Alta no valor<br>do aluguel em 4 anos</div></div>
+<!-- AGENT STRIP -->
+<div class="agent-strip">
+  <div class="agent-left">
+    <img src="darla.jpg" alt="Darla Batista" class="agent-avatar">
+    <div>
+      <div class="agent-name">Darla Batista</div>
+      <div class="agent-title">Corretora de Imoveis · Rio e Niteroi</div>
+    </div>
+  </div>
+  <p class="agent-statement">"Seria um prazer ajuda-lo a encontrar seu lar dos sonhos ou um investimento no Rio de Janeiro. Entre em contato ou deixe suas informacoes para receber as melhores oportunidades."</p>
+  <div class="agent-contacts">
+    <a href="https://wa.me/5522998837849" target="_blank" rel="noopener" class="contact-btn whatsapp">
+      <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+      WhatsApp
+    </a>
+    <a href="https://www.instagram.com/darlaimoveis.rj/" target="_blank" rel="noopener" class="contact-btn instagram">
+      <svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="0.8" fill="currentColor" stroke="none"/></svg>
+      @darlaimoveis.rj
+    </a>
+  </div>
 </div>
 
-<!-- SELLING POINTS -->
-<section class="points-bg">
+<!-- PROPERTIES -->
+<section class="properties" id="imoveis">
   <div class="section-wrap">
-    <p class="section-label reveal">Por que Niteroi</p>
-    <h2 class="section-title reveal">Uma cidade completa,<br><em>moderna e valorizada.</em></h2>
-    <div class="points-grid">
+    <p class="section-label reveal">Onde atuamos</p>
+    <h2 class="section-title reveal">Imoveis em <em>Rio, Niteroi<br>e regiao.</em></h2>
+    <div class="prop-grid">
+      <a href="https://jazzdinosaur.github.io/niteroi-imoveis/" class="prop-card reveal">
+        <img src="Niteroi_Stock.jpg" alt="Niteroi" class="prop-card-img">
+        <div class="prop-card-body">
+          <div class="prop-location">Niteroi · RJ</div>
+          <div class="prop-title">Viva em Niteroi</div>
+          <p class="prop-desc">Apartamentos modernos com vista para a Baia de Guanabara, a 20 minutos de ferry do centro do Rio. IDH mais alto do estado.</p>
+          <span class="prop-link">Ver apartamentos &rarr;</span>
+        </div>
+      </a>
+      <a href="rio/" class="prop-card reveal">
+        <img src="Skyline.png" alt="Rio de Janeiro" class="prop-card-img">
+        <div class="prop-card-body">
+          <div class="prop-location">Rio de Janeiro · RJ</div>
+          <div class="prop-title">Viva no Rio</div>
+          <p class="prop-desc">Do Porto Maravilha ao Maracana — imoveis novos em regioes em plena valorizacao, com lazer completo e acesso ao metro.</p>
+          <span class="prop-link">Ver apartamentos &rarr;</span>
+        </div>
+      </a>
+    </div>
+  </div>
+</section>
 
-      <div class="point-card reveal">
-        <div class="point-icon">&#127959;</div>
+<!-- FEATURES -->
+<section class="features-section">
+  <div class="section-wrap">
+    <p class="section-label reveal">O que oferecemos</p>
+    <h2 class="section-title reveal">Tudo que voce precisa<br><em>em um so lugar.</em></h2>
+    <div class="features-grid">
+      <div class="feature reveal">
+        <div class="feature-icon">&#127968;</div>
         <h3>Apartamentos modernos</h3>
-        <p>Unidades sofisticadas com acabamento de alto padrao, vagas de garagem, piscina, academia e areas de lazer completas para toda a familia.</p>
+        <p>Unidades novas com acabamento de alto padrao, para familias, casais e individuais.</p>
       </div>
-
-      <div class="point-card reveal">
-        <div class="point-icon">&#127749;</div>
-        <h3>Localizacao privilegiada</h3>
-        <p>Niteroi fica do outro lado da Baia de Guanabara: vista direta para o Pao de Acucar, o Corcovado e o skyline do Rio, a 20 minutos de ferry da cidade.</p>
-        <span class="point-source">Fonte: TourByTransit / Wikivoyage</span>
+      <div class="feature reveal">
+        <div class="feature-icon">&#127944;</div>
+        <h3>Lazer completo</h3>
+        <p>Piscina, academia, areas de convivencia e espaco kids — condominio completo para voce e sua familia.</p>
       </div>
-
-      <div class="point-card reveal">
-        <div class="point-icon">&#128200;</div>
-        <h3>Excelente potencial de valorizacao</h3>
-        <p>Lancamentos cresceram 73% em 2025, alugueis subiram 56% em 4 anos. Niteroi tem o IDH mais alto do estado do RJ e a maior proporcao de classe A do Brasil.</p>
-        <span class="point-source">Fonte: ADEMI Niteroi / FGV</span>
+      <div class="feature reveal">
+        <div class="feature-icon">&#128203;</div>
+        <h3>Financiamento facilitado</h3>
+        <p>Suporte completo para brasileiros e estrangeiros. Orientacao em cada etapa do processo.</p>
       </div>
-
-      <div class="point-card reveal">
-        <div class="point-icon">&#127958;</div>
-        <h3>Lazer e praias tranquilas</h3>
-        <p>Itaipu, Camboinhas, Piratininga e Itacoatiara: praias limpas e sem lotacao. Mais o Caminho Niemeyer, museus, restaurantes e a vibrante vida urbana de Niteroi.</p>
-        <span class="point-source">Fonte: Wikivoyage / Street Smart Brazil</span>
+      <div class="feature reveal">
+        <div class="feature-icon">&#128664;</div>
+        <h3>Vaga e transporte</h3>
+        <p>Garagem inclusa e facil acesso ao metro, onibus e vias expressas.</p>
       </div>
-
-      <div class="point-card reveal">
-        <div class="point-icon">&#128187;</div>
-        <h3>Ideal para trabalho remoto</h3>
-        <p>Demanda por home office cresceu 30% em Niteroi. Para quem trabalha de qualquer lugar do mundo, e a combinacao perfeita: infraestrutura, qualidade de vida e conectividade.</p>
-        <span class="point-source">Fonte: The Latin Investor, 2024</span>
+      <div class="feature reveal">
+        <div class="feature-icon">&#127758;</div>
+        <h3>Atendimento a estrangeiros</h3>
+        <p>Cambio favoravel para quem compra em euros, kwanzas ou meticais. Processo simplificado.</p>
       </div>
-
-      <div class="point-card reveal">
-        <div class="point-icon">&#128203;</div>
-        <h3>Suporte especializado</h3>
-        <p>Processo de compra com orientacao completa para brasileiros e estrangeiros: documentacao, financiamento, registro e acompanhamento em cada etapa.</p>
-      </div>
-
-    </div>
-    <div class="cta-center reveal">
-      <a href="#cadastro" class="cta-btn">Quero saber mais</a>
-    </div>
-  </div>
-</section>
-
-<!-- FINANCING BAND -->
-<div class="financing-band">
-  <div class="financing-inner reveal">
-    <div class="financing-text">
-      <h3>Financiamento facilitado<br><em>para brasileiros e estrangeiros.</em></h3>
-      <p>Seja voce residente no Brasil ou no exterior, nossa equipe oferece suporte completo no processo de financiamento e aquisicao. Cambio favoravel para quem compra em euros, kwanzas ou meticais.</p>
-      <div class="financing-tags">
-        <span class="ftag">Financiamento CEF / bancos</span>
-        <span class="ftag">Compra a vista</span>
-        <span class="ftag">Suporte para estrangeiros</span>
-        <span class="ftag">Documentacao assistida</span>
-        <span class="ftag">Cambio favoravel</span>
+      <div class="feature reveal">
+        <div class="feature-icon">&#128200;</div>
+        <h3>Potencial de valorizacao</h3>
+        <p>Regioes em expansao com forte crescimento de lancamentos e alugueis.</p>
       </div>
     </div>
-  </div>
-</div>
-
-<!-- PRICES -->
-<section class="price-section" id="precos">
-  <div class="section-wrap">
-    <p class="section-label reveal">Imoveis disponiveis</p>
-    <h2 class="section-title reveal">Precos atuais --<br><em>em constante valorizacao.</em></h2>
-    <p class="price-note reveal">Valores atualmente disponiveis no mercado. Niteroi registra altas de alguns pontos percentuais ao mes.</p>
-    <div class="price-grid">
-      <div class="price-card reveal">
-        <div class="price-type">1 Quarto</div>
-        <div class="price-amount">R$ 321.999</div>
-        <span class="price-from">atualmente a partir de</span>
-        <div class="price-desc">Ideal para moradia individual ou investimento com alto potencial de locacao.</div>
-        <a href="#cadastro" class="price-cta">Quero informacoes</a>
-      </div>
-      <div class="price-card reveal">
-        <div class="price-type">2 Quartos</div>
-        <div class="price-amount">R$ 368.500</div>
-        <span class="price-from">atualmente a partir de</span>
-        <div class="price-desc">Excelente custo-beneficio para casais ou investidores. Alta demanda de locacao na regiao.</div>
-        <a href="#cadastro" class="price-cta">Quero informacoes</a>
-      </div>
-      <div class="price-card featured reveal">
-        <div class="price-type">2 Quartos com Suite</div>
-        <div class="price-amount">R$ 654.500</div>
-        <span class="price-from">atualmente a partir de</span>
-        <div class="price-desc">Com vaga e vista para a baia. Conforto, localizacao e valorizacao em perfeito equilibrio.</div>
-        <a href="#cadastro" class="price-cta">Quero informacoes</a>
-      </div>
-      <div class="price-card reveal">
-        <div class="price-type">3 Quartos com Suite</div>
-        <div class="price-amount">R$ 795.500</div>
-        <span class="price-from">atualmente a partir de</span>
-        <div class="price-desc">Com vaga e vista panoramica. Espaco generoso para familias, com acabamento de alto padrao.</div>
-        <a href="#cadastro" class="price-cta">Quero informacoes</a>
-      </div>
-    </div>
-    <p class="price-disclaimer reveal">Precos em reais brasileiros (BRL). Valores sujeitos a alteracao conforme disponibilidade. Financiamento disponivel. Cambio favoravel para compradores em euros, kwanzas e meticais.</p>
   </div>
 </section>
 
@@ -274,13 +387,12 @@
 <section class="form-section" id="cadastro">
   <div class="section-wrap">
     <div class="form-inner">
-      <p class="section-label">Cadastre-se</p>
-      <h2 class="section-title">Receba informacoes<br><em>sem compromisso.</em></h2>
-      <p class="form-intro">Deixe seu contato e enviaremos informacoes sobre imoveis disponiveis em Niteroi. Sem spam, sem pressao: so o que for relevante para voce.</p>
-
+      <p class="section-label">Fale com a Darla</p>
+      <h2 class="section-title">Deixe seu contato.<br><em>Sem compromisso.</em></h2>
+      <p class="form-intro">Informe seu interesse e entro em contato com as melhores opcoes disponiveis para voce.</p>
       <form class="form-grid" action="https://usebasin.com/f/bfc13a3b62e3" method="POST" enctype="multipart/form-data">
         <input type="hidden" name="_next" value="https://darlaimoveis.com.br/obrigado.html">
-        <input type="hidden" name="_subject" value="Novo cadastro Viva em Niteroi">
+        <input type="hidden" name="_subject" value="Novo contato Darla Imoveis">
         <div class="field-row">
           <div class="field">
             <label>Nome <span class="req">*</span></label>
@@ -290,11 +402,11 @@
             <label>Pais <span class="opt">(opcional)</span></label>
             <select name="pais">
               <option value="">Selecione...</option>
+              <option>Brasil</option>
               <option>Angola</option>
               <option>Portugal</option>
               <option>Mocambique</option>
               <option>Cabo Verde</option>
-              <option>Brasil</option>
               <option>Outro</option>
             </select>
           </div>
@@ -305,12 +417,13 @@
         </div>
         <div class="field">
           <label>WhatsApp <span class="opt">(opcional - codigo do pais sem o +)</span></label>
-          <input type="text" name="whatsapp" placeholder="244 912 345 678">
+          <input type="text" name="whatsapp" placeholder="55 21 99999 9999">
         </div>
+
         <div>
-          <button type="submit" class="submit-btn">Enviar cadastro</button>
+          <button type="submit" class="submit-btn">Enviar</button>
         </div>
-        <p class="form-note">Seus dados sao usados apenas para envio de informacoes sobre imoveis em Niteroi. Voce pode cancelar a qualquer momento.</p>
+        <p class="form-note">Seus dados sao usados apenas para retorno de contato. Voce pode cancelar a qualquer momento.</p>
       </form>
     </div>
   </div>
@@ -318,18 +431,22 @@
 
 <!-- FOOTER -->
 <footer>
-  <div class="footer-brand">Viva em <span>Niteroi</span></div>
-  <a href="https://www.instagram.com/darlaimoveis.rj/" target="_blank" rel="noopener" class="footer-insta" aria-label="Instagram Darla Imoveis">
-    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="0.8" fill="currentColor" stroke="none"/></svg>
-    <span>@darlaimoveis.rj</span>
+  <div class="footer-brand">Darla <em>Imoveis</em></div>
+  <div class="footer-links">
+    <a href="rio/">Rio de Janeiro</a>
+    <a href="https://jazzdinosaur.github.io/niteroi-imoveis/">Niteroi</a>
+  </div>
+  <a href="https://www.instagram.com/darlaimoveis.rj/" target="_blank" rel="noopener" class="footer-insta">
+    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="0.8" fill="currentColor" stroke="none"/></svg>
+    @darlaimoveis.rj
   </a>
-  <div class="footer-copy">2025 - Imoveis em Niteroi, RJ, Brasil</div>
+  <p class="footer-copy">2025 · Darla Imoveis · Rio de Janeiro e Niteroi, RJ, Brasil</p>
 </footer>
 
 <script>
   const observer = new IntersectionObserver(entries => {
     entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
-  }, { threshold: 0.12 });
+  }, { threshold: 0.1 });
   document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
 </script>
 </body>
